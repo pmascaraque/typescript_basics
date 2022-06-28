@@ -1,4 +1,4 @@
-//variables
+//Variables
 
 var myNum: number = 5.321;
 
@@ -17,7 +17,7 @@ obj.z = 123;
 
 console.log(obj);
 
-//functions
+//Functions
 
 type AddFunc = (x: number, y: number) => number;
 
@@ -27,7 +27,7 @@ var add2 = ({ a, b }: { a: number, b: number }) => a + b;
 
 add(123, obj.x);
 
-//unions
+//Unions
 
 var maybeNum: number | string | AddFunc = 5;
 maybeNum = "Hello";
@@ -54,11 +54,11 @@ if (typeof dogCat === "number") {
     console.log("number: " + dogCat);
 }
 
-//casting
+//Casting
 
 add(dogCat as number, dogCat as any);
 
-//any
+//Any
 
 var logAnything = (x: any) => {
     console.log(x);
