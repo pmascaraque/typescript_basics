@@ -3,9 +3,9 @@ import React, { useReducer } from "react";
 type Actions =
   | { type: "add"; text: string }
   | {
-      type: "remove";
-      idx: number;
-    };
+    type: "remove";
+    idx: number;
+  };
 
 interface Todo {
   text: string;
