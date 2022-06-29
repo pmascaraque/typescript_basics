@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 interface Person {
     firstName: string;
@@ -6,18 +6,26 @@ interface Person {
 }
 
 interface Props {
-    text: string;
+    text?: string;
     ok?: boolean;
     i?: number;
     fn?: (bob: string) => void;
     person: Person;
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TextField: React.FC<Props> = ({text, person}) => {
+interface TextNode{
+    text: string;
+}
+
+export const TextField: React.FC<Props> = ({person, handleChange}) => {
+    const [yourName, setYourName] = useState<TextNode>({text: 'hello'});
+    const inputRef = useRef<HTMLInputElement>(null);
+
     return (
         <div>
             <p>My name is {person.firstName} {person.lastName}</p>
-            <input type="text" placeholder={text} />
+            <input ref={inputRef} onChange={handleChange}/>
         </div>
     )
 }

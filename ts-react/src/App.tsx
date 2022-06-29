@@ -3,7 +3,7 @@ import { TextField } from './TextField';
 
 const App: React.FC = () => {
   return <div>
-    <TextField text='What is yours?' person={{firstName: 'Bob', lastName: 'Ross'}} />
+    <TextField person={{ firstName: 'Bob', lastName: 'Ross' }} handleChange={e => { console.log(e.target.value); }} />
   </div>
 }
 
