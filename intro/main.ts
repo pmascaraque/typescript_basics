@@ -17,6 +17,12 @@ obj.z = 123;
 
 console.log(obj);
 
+const myArray: string[] = ["Blue", "Green", "Red"];
+
+for (const item of myArray) {
+    console.log(item.toUpperCase());
+}
+
 //Functions
 
 type AddFunc = (x: number, y: number) => number;
