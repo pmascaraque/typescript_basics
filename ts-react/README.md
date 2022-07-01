@@ -1,1 +1,1 @@
-Learning how to work with TypeScript with React.
+Introduction to basic React concepts like hooks and props with Typescript.
