@@ -42,12 +42,32 @@ function UseStateCounter({ children }: { children: (num: number) => ReactNode })
     </div>)
 }
 
+//Generics List
+function List<ListItem>({
+  items, 
+  render
+}: {
+  items: ListItem[],
+  render: (item: ListItem) => ReactNode
+}) {
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>
+          {render(item)}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function App() {
   return (
     <div>
       <Heading title="Hello there"></Heading>
       <Container>Children</Container>
       <UseStateCounter>{(num: number) => <div>Today's number is {num}</div>}</UseStateCounter>
+      <List items={["JACK", "Sadie", "Otto"]} render={(item: string) => <div>{item.toLowerCase()}</div>}></List>
     </div>
   );
 }
