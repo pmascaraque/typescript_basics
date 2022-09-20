@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { ReactNode, ReactElement } from 'react';
 import './App.css';
 
+//Conventional Props
+function Heading({ title }: { title: string; }) {
+  return (
+    <h1>{title}</h1>
+  )
+}
+
+//Default Props
+const defaultContainerProps = {
+  heading: <strong>Default Container Props</strong>
+}
+
+type ContainerProps = { 
+  children: ReactNode
+} & typeof defaultContainerProps;
+
+function Container({ heading, children }: ContainerProps): ReactElement {
+  return (
+    <div>
+      <h1>{heading}</h1>
+      {children}
+    </div>
+  )
+}
+Container.defaultProps = defaultContainerProps;
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Heading title="Hello there"></Heading>
+      <Container>Children</Container>
     </div>
   );
 }
