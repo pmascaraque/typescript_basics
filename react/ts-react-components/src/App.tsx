@@ -13,7 +13,7 @@ const defaultContainerProps = {
   heading: <strong>Default Container Props</strong>
 }
 
-type ContainerProps = { 
+type ContainerProps = {
   children: ReactNode
 } & typeof defaultContainerProps;
 
@@ -26,11 +26,28 @@ function Container({ heading, children }: ContainerProps): ReactElement {
   )
 }
 Container.defaultProps = defaultContainerProps;
+
+//Functional Props
+function UseStateCounter({ children }: { children: (num: number) => ReactNode }) {
+  const [state, stateSet] = React.useState<number>(1);
+
+  return (
+    <div>
+      <div>
+        {children(state)}
+      </div>
+      <div>
+        <button onClick={() => stateSet(state + 1)}>Add</button>
+      </div>
+    </div>)
+}
+
 function App() {
   return (
     <div>
       <Heading title="Hello there"></Heading>
       <Container>Children</Container>
+      <UseStateCounter>{(num: number) => <div>Today's number is {num}</div>}</UseStateCounter>
     </div>
   );
 }
