@@ -1,7 +1,11 @@
 import { useRef } from "react";
 
 function UseRefComponent() {
-  return <div>a</div>
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  return (
+  <input ref={inputRef} />
+  )
 }
 
 export default UseRefComponent;
