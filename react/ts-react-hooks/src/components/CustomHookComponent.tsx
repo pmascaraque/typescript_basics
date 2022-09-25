@@ -13,14 +13,17 @@ export interface Beverage {
   level: number;
 }
 
-function useFetchData(url: string) {
+function useFetchData(url: string): {
+  data: Beverage[] | null;
+  done: boolean;
+} {
   const [data, dataSet] = useState<Beverage[] | null>(null);
   const [done, doneSet] = useState(false);
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
-      .then(data => {
+      .then((data: Beverage[]) => {
         dataSet(data);
         doneSet(true);
       })
@@ -33,9 +36,12 @@ function useFetchData(url: string) {
 }
 
 function CustomHookComponent() {
+  const { data, done} = useFetchData("/hv-taplist.json")
   return (
     <div>
-
+      {done && (
+        <img src={data![0].logo} alt="Beverage Logo"/> //data guaranteed to not be null given done being true
+      )}
     </div>
   )
 }
